@@ -1,8 +1,11 @@
 var express =require('express');
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
+var bodyparser= require('body-parser');
 var app =express();
-var DB = mongoose.connect('mongodb://localhost/BookApi');
-var Book =require('./module/bookModule')
+
+//connect to mongoose
+var DB = mongoose.connect('mongodb://localhost/BookStore');
+var Book =require('./module/books');
 
 var port =process.env.Port ||3000;
 
@@ -23,6 +26,9 @@ bookrouter.route('/Books')
     // var responsejson ={hello:'this is my api'};
     // res.json(responsejson);
 });
+
+
+
 app.use('/api',bookrouter);
 
 //var port = process.env.port|| 3000;
